@@ -1,0 +1,299 @@
+:root {
+    /* Futuristic / Cyberpunk-lite Palette */
+    --bg-color: #0d1117;
+    /* Deep Midnight Blue/Black */
+    --text-color: #e6edf3;
+    --accent-color: #58a6ff;
+    /* Electric Blue */
+    --accent-secondary: #bf5af2;
+    /* Neon Purple */
+    --font-heading: "Impact", "Haettenschweiler", "Arial Narrow", sans-serif;
+    --font-body: "Inter", "Segoe UI", sans-serif;
+    /* Clean modern sans */
+    --section-padding: 10vh 5vw;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 50% 0%, #1f2937 0%, var(--bg-color) 70%);
+    /* Subtle top gradient */
+    color: var(--text-color);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Grainy Noise - made subtler */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    /* Reduced opacity */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Nav */
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    mix-blend-mode: difference;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.nav-links a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Typography */
+h1 {
+    font-family: var(--font-heading);
+    font-size: 12vw;
+    line-height: 0.85;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 6vw;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Hero Section */
+.hero-container {
+    /* Main container for scroll distance */
+    background: transparent;
+}
+
+.hero-sticky {
+    /* Pinned content */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--section-padding);
+    box-sizing: border-box;
+}
+
+/* Ensure title doesn't break layout when split */
+#hero-title {
+    display: block;
+    width: 100%;
+    word-break: normal;
+    /* Don't chop words on desktop */
+    pointer-events: none;
+    /* Let clicks pass through */
+    text-align: left;
+    /* Or center? Undo site is usually center/left */
+}
+
+#hero-title span {
+    /* Individual letters */
+    display: inline-block;
+}
+
+.char-span {
+    display: inline-block;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.space-span {
+    width: 2vw;
+    display: inline-block;
+}
+
+.hero-sub {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+/* Sticky Scroll Layout */
+.sticky-wrapper {
+    position: relative;
+    display: flex;
+    min-height: 200vh;
+    /* Long scroll */
+}
+
+.sticky-side {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scroll-side {
+    width: 60%;
+    padding: 100px 50px;
+    box-sizing: border-box;
+}
+
+.scroll-item {
+    margin-bottom: 15vh;
+    opacity: 0.3;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+}
+
+.scroll-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.item-number {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+
+/* Ecosystem Grid */
+.ecosystem-section {
+    padding: var(--section-padding);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    /* border effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grid-item {
+    background: var(--bg-color);
+    padding: 40px;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.grid-item:hover {
+    background: #252525;
+}
+
+.grid-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Partners Footer */
+.partners-section {
+    padding: 100px 5vw;
+    text-align: center;
+    background: #000;
+}
+
+.partner-links a {
+    display: inline-block;
+    margin: 0 20px;
+    color: #666;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.partner-links a:hover {
+    color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sticky-wrapper {
+        flex-direction: column;
+    }
+
+    .sticky-side {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 40px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .scroll-side {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    /* Hero Adjustments for Mobile */
+    .hero-sticky {
+        justify-content: center;
+        padding: 0 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 19vw;
+        line-height: 0.6;
+        /* Ultra tight line height */
+        white-space: normal;
+    }
+
+    .space-span {
+        display: block;
+        width: 100%;
+        height: 0;
+        /* Removed vertical spacing */
+        margin: 0;
+    }
+
+    #hero-title {
+        text-align: center;
+        word-break: keep-all;
+    }
+}
